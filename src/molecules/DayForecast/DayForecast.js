@@ -40,7 +40,7 @@ const StyledHeader = styled.h1`
 const StyledSubheading = styled.h4`
   padding: 0 40px;
   font-weight: normal;
-  color: #999;
+  color: #676767;
   margin-bottom: 40px;
 `;
 
