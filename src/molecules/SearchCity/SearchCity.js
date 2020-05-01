@@ -73,7 +73,11 @@ const SearchCity = () => {
               <IconSearch />
             </StyledIcon>
           </InputGroupAddon>
+          <label htmlFor="searchInput" style={{ display: 'none' }}>
+            Search
+          </label>
           <Input
+            id="searchInput"
             name="search"
             pattern={PATTERN_INPUT}
             value={inputText}
@@ -116,7 +120,9 @@ const SearchCity = () => {
       {inputText &&
         !search.loading &&
         search.result &&
-        search.result.length === 0 && <div>No match, Try to search for another major city</div>}
+        search.result.length === 0 && (
+          <div>No match, Try to search for another major city</div>
+        )}
     </StyledContainer>
   );
 };
