@@ -8,6 +8,12 @@ Cause we have face an CORS issue with https://www.metaweather.com/api/​, we mu
 
 This way organize this app base on ATOMIC Design, find out here https://bradfrost.com/blog/post/atomic-web-design/
 
+## Demo
+
+Do not expect it to be deployed, but if you like can see it here
+
+https://affectionate-poitras-de3c45.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
