@@ -73,12 +73,9 @@ const SearchCity = () => {
               <IconSearch />
             </StyledIcon>
           </InputGroupAddon>
-          <label htmlFor="searchInput" style={{ display: 'none' }}>
-            Search
-          </label>
           <Input
-            id="searchInput"
             name="search"
+            aria-label="Search"
             pattern={PATTERN_INPUT}
             value={inputText}
             maxLength="20"
