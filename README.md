@@ -1,12 +1,32 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Design Reference
+<!-- TOC -->
+
+- [Note](#note)
+- [Design Reference](#design-reference)
+- [Demo](#demo)
+- [Available Scripts](#available-scripts)
+  - [`yarn start`](#yarn-start)
+  - [`yarn test`](#yarn-test)
+  - [`yarn build`](#yarn-build)
+  - [Code Splitting](#code-splitting)
+  - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
+  - [Making a Progressive Web App](#making-a-progressive-web-app)
+  - [Advanced Configuration](#advanced-configuration)
+  - [Deployment](#deployment)
+  - [`yarn build` fails to minify](#yarn-build-fails-to-minify)
+
+<!-- /TOC -->
+
+## Note
+
+We face an CORS issue with https://www.metaweather.com/api/​, we must proxy it through https://cors-anywhere.herokuapp.com/
+
+Organize this app base on ATOMIC Design, find out here https://bradfrost.com/blog/post/atomic-web-design/
+
+## Design Reference
 
 https://dribbble.com/shots/6821143-Weather/attachments
-
-Cause we have face an CORS issue with https://www.metaweather.com/api/​, we must proxy it throught https://cors-anywhere.herokuapp.com/
-
-This way organize this app base on ATOMIC Design, find out here https://bradfrost.com/blog/post/atomic-web-design/
 
 ## Demo
 
