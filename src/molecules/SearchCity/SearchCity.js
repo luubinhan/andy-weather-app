@@ -132,11 +132,9 @@ const SearchCity = () => {
           />
 
           {inputText !== '' && (
-            <Button type="button" onClick={resetSearch}>
-              <StyledClearButton type="button" onClick={resetSearch}>
-                <IconTimes />
-              </StyledClearButton>
-            </Button>
+            <StyledClearButton type="button" onClick={resetSearch}>
+              <IconTimes />
+            </StyledClearButton>
           )}
 
           {search.loading && (
