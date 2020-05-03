@@ -4,7 +4,7 @@ import SearchCity from './SearchCity';
 
 jest.mock('../../store/cities', () => ({
   useCities: jest.fn().mockReturnValue([
-    null,
+    { selectedCity: null, recentLocations: [] },
     {
       changeCity: jest.fn()
     }
