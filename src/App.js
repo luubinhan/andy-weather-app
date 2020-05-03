@@ -18,11 +18,16 @@ const StyledContainer = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   @media (max-width: 767px) {
     flex-basis: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 `;
 
 const StyledHeader = styled.div`
   padding: 40px;
+  @media (max-width: 767px) {
+    padding: 20px;
+  }
 `;
 
 function App() {
