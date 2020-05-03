@@ -18,7 +18,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const StyledWeekday = styled.div`
+const StyledWeekday = styled.h5`
   font-weight: bold;
 `;
 
@@ -42,15 +42,22 @@ const StyledStateName = styled.div`
   }
 `;
 
-const StyledMaxTemp = styled.div`
+const StyledMaxTemp = styled.h3`
   font-size: 2rem;
   line-height: 1;
   font-weight: bold;
+  margin: 0;
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const StyledMinTemp = styled.div`
   font-size: 1.2rem;
   color: #6b6b6b;
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 
 const ForeCast = ({

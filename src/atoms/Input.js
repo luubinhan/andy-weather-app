@@ -11,6 +11,9 @@ const Input = styled.input`
   background-clip: padding-box;
   border: 1px solid #e0e0e0;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
   :focus,
   :hover {
     outline: none;
