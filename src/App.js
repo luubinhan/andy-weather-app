@@ -9,6 +9,10 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 767px) {
+    display: block;
+    padding: 10px 20px;
+  }
 `;
 
 const StyledContainer = styled.div`

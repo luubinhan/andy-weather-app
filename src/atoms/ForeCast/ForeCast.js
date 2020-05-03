@@ -15,6 +15,7 @@ const StyledCard = styled.div`
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    border-left: none;
   }
 `;
 
