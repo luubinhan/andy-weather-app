@@ -132,7 +132,11 @@ const SearchCity = () => {
           />
 
           {inputText !== '' && (
-            <StyledClearButton type="button" onClick={resetSearch}>
+            <StyledClearButton
+              aria-label="clear search"
+              type="button"
+              onClick={resetSearch}
+            >
               <IconTimes />
             </StyledClearButton>
           )}

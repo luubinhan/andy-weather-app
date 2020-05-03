@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import SearchCity from './SearchCity';
 
@@ -42,4 +42,9 @@ test('It should display number of result correctly', () => {
   const cityText = getByText(/London/i);
   expect(resultText).toBeInTheDocument();
   expect(cityText).toBeInTheDocument();
+});
+
+it('It should NOT display clear button when input empty', () => {
+  const clearButton = screen.queryByText('clear search');
+  expect(clearButton).toBeNull();
 });
