@@ -1,0 +1,4 @@
+{
+  "PATTERN_INPUT": "^[a-zA-Z0-9 ]*$",
+  "MOBILE_WIDTH": "767px"
+}

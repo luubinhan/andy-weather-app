@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MOBILE_WIDTH } from './config.json';
 import DayForecast from './molecules/DayForecast/DayForecast';
 import SearchCity from './molecules/SearchCity/SearchCity';
 
@@ -9,7 +10,7 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     display: block;
     padding: 10px 20px;
   }
@@ -20,7 +21,7 @@ const StyledContainer = styled.div`
   background: #fff;
   margin: 0 auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     flex-basis: 90%;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -29,7 +30,7 @@ const StyledContainer = styled.div`
 
 const StyledHeader = styled.div`
   padding: 40px;
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     padding: 20px;
   }
 `;

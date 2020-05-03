@@ -4,8 +4,11 @@ import React from 'react';
 import { useAsync } from 'react-async-hook';
 import styled from 'styled-components';
 import ForeCast from '../../atoms/ForeCast/ForeCast';
+import Heading from '../../atoms/Heading';
 import LoadingBar from '../../atoms/LoadingBar';
+import SubHeading from '../../atoms/SubHeading';
 import config from '../../config';
+import { MOBILE_WIDTH } from '../../config.json';
 import formatDay from '../../helpers/formatDate';
 import { useCities } from '../../store/cities';
 
@@ -28,27 +31,8 @@ const StyledLoadingBar = styled.div`
 
 const StyledCardGroup = styled.div`
   display: flex;
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     flex-direction: column;
-  }
-`;
-
-const StyledHeader = styled.h1`
-  padding: 0 40px;
-  line-height: 1.1;
-  @media (max-width: 767px) {
-    padding: 0 20px;
-    font-size: 1.3rem;
-  }
-`;
-const StyledSubheading = styled.h4`
-  padding: 0 40px;
-  font-weight: normal;
-  color: #676767;
-  margin-bottom: 40px;
-  @media (max-width: 767px) {
-    padding: 0 20px;
-    margin-bottom: 20px;
   }
 `;
 
@@ -75,17 +59,15 @@ const DayForecast = ({ numberOfDay = 5 }) => {
       )}
       {asyncForecastData.result && (
         <>
-          <StyledHeader>
-            {_.get(asyncForecastData.result, 'title')}
-          </StyledHeader>
-          <StyledSubheading>
+          <Heading>{_.get(asyncForecastData.result, 'title')}</Heading>
+          <SubHeading>
             {formatDay(Date.parse(time), {
               weekday: 'long',
               year: 'numeric',
               month: 'long',
               day: 'numeric'
             })}
-          </StyledSubheading>
+          </SubHeading>
           <StyledCardGroup>
             {_.take(
               _.get(asyncForecastData.result, 'consolidated_weather', []),

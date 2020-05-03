@@ -6,6 +6,7 @@ import Input from '../../atoms/Input';
 import InputGroup from '../../atoms/InputGroup';
 import InputGroupAddon from '../../atoms/InputGroupAddon';
 import LoadingBar from '../../atoms/LoadingBar';
+import { MOBILE_WIDTH, PATTERN_INPUT } from '../../config.json';
 import useOnClickOutside from '../../hook/useClickOutside';
 import useSearchCity from '../../hook/useSearchCity';
 import { useCities } from '../../store/cities';
@@ -15,7 +16,7 @@ import { ReactComponent as IconTimes } from '../../svg/times.svg';
 const StyledContainer = styled.div`
   display: flex;
   align-items: center;
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     display: block;
   }
 `;
@@ -23,7 +24,7 @@ const StyledContainer = styled.div`
 const StyledSearchCity = styled.div`
   position: relative;
   margin-right: 5px;
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     flex-basis: 100%;
     display: flex;
     margin-right: 0;
@@ -87,8 +88,6 @@ const StyledClearButton = styled.button`
     opacity: 1;
   }
 `;
-
-const PATTERN_INPUT = '^[a-zA-Z0-9 ]*$';
 
 const SearchCity = () => {
   const { inputText, setInputText, search } = useSearchCity();

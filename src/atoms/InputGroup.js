@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MOBILE_WIDTH } from '../config.json';
 
 const InputGroup = styled.div`
   position: relative;
@@ -9,7 +10,7 @@ const InputGroup = styled.div`
   input {
     padding-left: 40px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: ${MOBILE_WIDTH}) {
     flex-basis: 100%;
     display: flex;
   }
