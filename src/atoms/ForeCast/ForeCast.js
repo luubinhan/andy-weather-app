@@ -20,6 +20,7 @@ const StyledCard = styled.div`
 
 const StyledWeekday = styled.h5`
   font-weight: bold;
+  margin: 0;
 `;
 
 const StyledIcon = styled.div`
@@ -39,6 +40,9 @@ const StyledStateName = styled.div`
   margin-bottom: 20px;
   @media (max-width: 767px) {
     margin: 0 20px 0 0;
+  }
+  @media (max-width: 375px) {
+    display: none;
   }
 `;
 
