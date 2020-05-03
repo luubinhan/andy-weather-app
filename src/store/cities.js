@@ -1,4 +1,7 @@
-import { createHook, createStore } from 'react-sweet-state';
+import unionBy from 'lodash/unionBy';
+import { createHook, createStore, defaults } from 'react-sweet-state';
+
+defaults.devtools = true;
 
 const initialState = {
   selectedCity: {
@@ -6,14 +9,18 @@ const initialState = {
     location_type: 'City',
     title: 'Ho Chi Minh City',
     woeid: 1252431
-  }
+  },
+  recentLocations: []
 };
 
 const actions = {
-  changeCity: (city) => ({ setState }) => {
+  changeCity: (city) => ({ getState, setState }) => {
     if (city) {
       setState({
         selectedCity: city
+      });
+      setState({
+        recentLocations: unionBy([...getState().recentLocations, city], 'woeid')
       });
     }
   }

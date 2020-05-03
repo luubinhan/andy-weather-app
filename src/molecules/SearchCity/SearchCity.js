@@ -1,11 +1,12 @@
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import InputGroup from '../../atoms/InputGroup';
 import InputGroupAddon from '../../atoms/InputGroupAddon';
 import LoadingBar from '../../atoms/LoadingBar';
+import useOnClickOutside from '../../hook/useClickOutside';
 import useSearchCity from '../../hook/useSearchCity';
 import { useCities } from '../../store/cities';
 import { ReactComponent as IconSearch } from '../../svg/search.svg';
@@ -91,13 +92,22 @@ const PATTERN_INPUT = '^[a-zA-Z0-9 ]*$';
 
 const SearchCity = () => {
   const { inputText, setInputText, search } = useSearchCity();
-  const [openSuggestion, setOpenSuggestion] = useState(!!search.result);
-  const [, { changeCity }] = useCities();
+  const [openSuggestion, setOpenSuggestion] = useState(false);
+  const [{ recentLocations }, { changeCity }] = useCities();
+  const ref = useRef();
+
+  useOnClickOutside(ref, () => setOpenSuggestion(false));
 
   const handleSelectCity = (city) => {
     changeCity(city);
     setInputText('');
     setOpenSuggestion(false);
+  };
+
+  const displaySuggestion = () => {
+    if (recentLocations.length) {
+      setOpenSuggestion(true);
+    }
   };
 
   const resetSearch = React.useCallback(() => {
@@ -111,8 +121,10 @@ const SearchCity = () => {
     }
   }, [search.result]);
 
+  const results = _.get(search, 'result.length', 0);
+
   return (
-    <StyledContainer>
+    <StyledContainer ref={ref}>
       <StyledSearchCity>
         <InputGroup>
           <InputGroupAddon addonType="prepend">
@@ -128,6 +140,7 @@ const SearchCity = () => {
             maxLength="20"
             placeholder="Search"
             autoComplete="off"
+            onFocus={displaySuggestion}
             onChange={(e) => setInputText(e.target.value)}
           />
 
@@ -149,11 +162,27 @@ const SearchCity = () => {
           <StyledResultContainer>
             {search.error && <div>Error: {search.error.message}</div>}
 
-            <div>
-              <h6 style={{ paddingLeft: 14 }}>
-                Results: {_.get(search, 'result.length', 0)}
-              </h6>
-              {search.result && (
+            {recentLocations && !results && (
+              <div>
+                <h6 style={{ paddingLeft: 14 }}>Recent locations</h6>
+                <div>
+                  {recentLocations.map((city) => (
+                    <div key={_.get(city, 'woeid')}>
+                      <Button
+                        type="button"
+                        onClick={() => handleSelectCity(city)}
+                      >
+                        {_.get(city, 'title')}
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {!!results && (
+              <div>
+                <h6 style={{ paddingLeft: 14 }}>Results: {results}</h6>
                 <div>
                   {search.result.map((city) => (
                     <div key={_.get(city, 'woeid')}>
@@ -166,8 +195,8 @@ const SearchCity = () => {
                     </div>
                   ))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </StyledResultContainer>
         )}
       </StyledSearchCity>
