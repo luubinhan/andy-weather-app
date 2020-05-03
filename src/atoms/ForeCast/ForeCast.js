@@ -22,12 +22,19 @@ const StyledWeekday = styled.div`
 `;
 
 const StyledIcon = styled.div`
-  margin: 20px auto;
+  margin: 20px auto 0;
   img {
     height: 50px;
   }
   @media (max-width: 767px) {
     margin: 0 20px 0 auto;
+  }
+`;
+
+const StyledStateName = styled.div`
+  margin-bottom: 20px;
+  @media (max-width: 767px) {
+    margin: 0 20px;
   }
 `;
 
@@ -57,8 +64,10 @@ const ForeCast = ({
         <img
           src={`${config.api_host}${config.api_image_path}${stateAbbr}.svg`}
           alt={stateName}
+          loading="lazy"
         />
       </StyledIcon>
+      <StyledStateName>{stateName}</StyledStateName>
       <div>
         <StyledMaxTemp>
           {maxTemperature.toFixed(0)}

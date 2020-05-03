@@ -70,7 +70,14 @@ const DayForecast = ({ numberOfDay = 5 }) => {
           <StyledHeader>
             {_.get(asyncForecastData.result, 'title')}
           </StyledHeader>
-          <StyledSubheading>{formatDay(Date.parse(time))}</StyledSubheading>
+          <StyledSubheading>
+            {formatDay(Date.parse(time), {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </StyledSubheading>
           <StyledCardGroup>
             {_.take(
               _.get(asyncForecastData.result, 'consolidated_weather', []),
