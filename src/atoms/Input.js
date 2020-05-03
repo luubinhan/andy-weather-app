@@ -17,8 +17,9 @@ const Input = styled.input`
   :focus,
   :hover {
     outline: none;
-    -webkit-box-shadow: 0 0 0 1px #000000;
-    box-shadow: 0 0 0 1px #000000;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+    border-color: #000;
   }
 `;
 
