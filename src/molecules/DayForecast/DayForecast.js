@@ -36,12 +36,20 @@ const StyledCardGroup = styled.div`
 const StyledHeader = styled.h1`
   padding: 0 40px;
   line-height: 1.1;
+  @media (max-width: 767px) {
+    padding: 0 20px;
+    font-size: 1.3rem;
+  }
 `;
 const StyledSubheading = styled.h4`
   padding: 0 40px;
   font-weight: normal;
   color: #676767;
   margin-bottom: 40px;
+  @media (max-width: 767px) {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
 `;
 
 const fetchForeCastData = async (woeid) =>

@@ -9,6 +9,10 @@ const InputGroup = styled.div`
   input {
     padding-left: 40px;
   }
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+    display: flex;
+  }
 `;
 
 export default InputGroup;

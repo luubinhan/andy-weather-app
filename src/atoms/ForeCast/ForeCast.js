@@ -14,6 +14,7 @@ const StyledCard = styled.div`
   @media (max-width: 767px) {
     display: flex;
     align-items: center;
+    padding: 10px 20px;
   }
 `;
 
@@ -25,6 +26,9 @@ const StyledIcon = styled.div`
   margin: 20px auto 0;
   img {
     height: 50px;
+    @media (max-width: 767px) {
+      height: 30px;
+    }
   }
   @media (max-width: 767px) {
     margin: 0 20px 0 auto;
@@ -34,7 +38,7 @@ const StyledIcon = styled.div`
 const StyledStateName = styled.div`
   margin-bottom: 20px;
   @media (max-width: 767px) {
-    margin: 0 20px;
+    margin: 0 20px 0 0;
   }
 `;
 

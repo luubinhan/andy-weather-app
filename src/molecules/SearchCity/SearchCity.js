@@ -9,24 +9,40 @@ import LoadingBar from '../../atoms/LoadingBar';
 import useSearchCity from '../../hook/useSearchCity';
 import { useCities } from '../../store/cities';
 import { ReactComponent as IconSearch } from '../../svg/search.svg';
+import { ReactComponent as IconTimes } from '../../svg/times.svg';
 
 const StyledContainer = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 767px) {
+    display: block;
+  }
 `;
 
 const StyledSearchCity = styled.div`
   position: relative;
   margin-right: 5px;
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+    display: flex;
+    margin-right: 0;
+    input {
+      width: 100%;
+    }
+  }
 `;
 
 const StyledResultContainer = styled.div`
   position: absolute;
-  width: 228px;
+  left: 0;
+  right: 0;
+  top: 38px;
   background: #fff;
   padding: 10px;
   z-index: 99;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  max-height: 50vh;
+  overflow-y: auto;
   button {
     display: block;
     width: 100%;
@@ -34,7 +50,7 @@ const StyledResultContainer = styled.div`
   }
 `;
 
-const StyledIcon = styled.span`
+const StyledIconSearch = styled.span`
   display: inline-flex;
   height: 38px;
   width: 38px;
@@ -42,6 +58,32 @@ const StyledIcon = styled.span`
   justify-content: center;
   svg {
     width: 18px;
+  }
+`;
+
+const StyledClearButton = styled.button`
+  display: flex;
+  height: 22px;
+  width: 22px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 2;
+  opacity: 0.5;
+  svg {
+    width: 8px;
+    fill: #fff;
+  }
+  :hover,
+  :focus {
+    opacity: 1;
   }
 `;
 
@@ -58,6 +100,11 @@ const SearchCity = () => {
     setOpenSuggestion(false);
   };
 
+  const resetSearch = React.useCallback(() => {
+    setInputText('');
+    setOpenSuggestion(false);
+  }, [setInputText]);
+
   useEffect(() => {
     if (_.get(search.result, 'length')) {
       setOpenSuggestion(true);
@@ -69,9 +116,9 @@ const SearchCity = () => {
       <StyledSearchCity>
         <InputGroup>
           <InputGroupAddon addonType="prepend">
-            <StyledIcon>
+            <StyledIconSearch>
               <IconSearch />
-            </StyledIcon>
+            </StyledIconSearch>
           </InputGroupAddon>
           <Input
             name="search"
@@ -83,6 +130,14 @@ const SearchCity = () => {
             autoComplete="off"
             onChange={(e) => setInputText(e.target.value)}
           />
+
+          {inputText !== '' && (
+            <Button type="button" onClick={resetSearch}>
+              <StyledClearButton type="button" onClick={resetSearch}>
+                <IconTimes />
+              </StyledClearButton>
+            </Button>
+          )}
 
           {search.loading && (
             <LoadingBar style={{ position: 'absolute', bottom: 0 }} />
@@ -118,7 +173,11 @@ const SearchCity = () => {
         !search.loading &&
         search.result &&
         search.result.length === 0 && (
-          <div>No match, Try to search for another major city</div>
+          <div>
+            <small>
+              No matches found, try to search for another major city
+            </small>
+          </div>
         )}
     </StyledContainer>
   );
