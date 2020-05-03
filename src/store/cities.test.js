@@ -8,8 +8,9 @@ beforeEach(() => {
 });
 
 it('should NOT change set state if input null', () => {
-  getState.mockImplementation(() => {
-    selectedCity: 0;
+  getState.mockReturnValueOnce({
+    selectedCity: 0,
+    recentLocations: []
   });
 
   const thunk = actions.changeCity(false);
@@ -18,11 +19,16 @@ it('should NOT change set state if input null', () => {
 });
 
 it('should setState to new one', () => {
-  getState.mockImplementation(() => {
-    selectedCity: 0;
+  getState.mockReturnValueOnce({
+    selectedCity: 0,
+    recentLocations: []
   });
+
   const thunk = actions.changeCity(1);
   thunk({ setState, getState });
   expect(setState).toHaveBeenCalledTimes(1);
-  expect(setState).toHaveBeenCalledWith({ selectedCity: 1 });
+  expect(setState).toHaveBeenCalledWith({
+    selectedCity: 1,
+    recentLocations: [1]
+  });
 });

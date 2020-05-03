@@ -17,9 +17,7 @@ const actions = {
   changeCity: (city) => ({ getState, setState }) => {
     if (city) {
       setState({
-        selectedCity: city
-      });
-      setState({
+        selectedCity: city,
         recentLocations: unionBy([...getState().recentLocations, city], 'woeid')
       });
     }
