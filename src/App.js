@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MOBILE_WIDTH } from './config.json';
 import DayForecast from './molecules/DayForecast/DayForecast';
 import SearchCity from './molecules/SearchCity/SearchCity';
+import { MOBILE_WIDTH } from './settings.json';
 
 const StyledWrapper = styled.div`
   background-color: #efefef;

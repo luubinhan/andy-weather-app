@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MOBILE_WIDTH } from '../config.json';
+import { MOBILE_WIDTH } from '../settings.json';
 
 const SubHeading = styled.h4`
   padding: 0 40px;

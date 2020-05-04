@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import config from '../../config';
-import { MOBILE_WIDTH } from '../../config.json';
 import formatDay from '../../helpers/formatDate';
+import { MOBILE_WIDTH } from '../../settings.json';
 
 const StyledCard = styled.div`
   flex-grow: 1;

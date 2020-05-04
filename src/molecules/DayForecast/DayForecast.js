@@ -8,8 +8,8 @@ import Heading from '../../atoms/Heading';
 import LoadingBar from '../../atoms/LoadingBar';
 import SubHeading from '../../atoms/SubHeading';
 import config from '../../config';
-import { MOBILE_WIDTH } from '../../config.json';
 import formatDay from '../../helpers/formatDate';
+import { MOBILE_WIDTH } from '../../settings.json';
 import { useCities } from '../../store/cities';
 
 const StyledDayForecast = styled.div`
